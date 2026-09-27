@@ -628,8 +628,8 @@
   }
   function toggleFull() {
     try {
-      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
-      else document.exitFullscreen();
+      const r = !document.fullscreenElement ? document.documentElement.requestFullscreen() : document.exitFullscreen();
+      if (r && r.catch) r.catch(() => { /* recusado (ex.: dentro de um quadro) */ });
     } catch (e) { /* sem suporte */ }
   }
   G.SettingsScene = SettingsScene;

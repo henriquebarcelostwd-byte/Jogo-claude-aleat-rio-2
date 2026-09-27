@@ -388,7 +388,10 @@
 
   function resize() {
     const cv = G.canvas;
-    const s = Math.min(window.innerWidth / G.W, window.innerHeight / G.H);
+    const box = document.getElementById('wrap');
+    const bw = (box && box.clientWidth) || window.innerWidth;
+    const bh = (box && box.clientHeight) || window.innerHeight;
+    const s = Math.min(bw / G.W, bh / G.H);
     cv.style.width = Math.floor(G.W * s) + 'px';
     cv.style.height = Math.floor(G.H * s) + 'px';
     applyQuality();
